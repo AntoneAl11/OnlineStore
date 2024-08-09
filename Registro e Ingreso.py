@@ -7,7 +7,7 @@ cursor = conn.cursor()
 
 #Crear tabla para el registro de nuevas cuentas
 cursor.execute("""
-                CREATE TABLE IF NOT EXIST Usuarios (
+                CREATE TABLE IF NOT EXISTS usuarios (
                     correo TEXT PRIMARY KEY,
                     nombre1 TEXT,
                     nombre2 TEXT,
@@ -32,4 +32,21 @@ conytaseña_2 = ""
 registro = "registrarme"
 ingreso = "ingresar"
 nombre_buscar = ""
+
+#Mensaje de bienvenida al usuario
+print("\n>>>>>>>>>>>>>>>>>>>>> Bienvenido Usuario <<<<<<<<<<<<<<<<<<<<<<<<\n")
+
+#Pedir nombre para saludarlo y preguntar si desea registrarse o ingresar
+saludo = str(input("¿Cual es tu nombre?\n"))
+accion = str(input("\n¿Que deseas hacer? " +saludo+" (registrarme/ingresar)\n"))
+
+#Bucle True para pedir al usuario que ingrese una opción valida
+while True:
+    if accion == registro:
+        break
+    elif accion == ingreso:
+        break
+    else:
+        print("Dato ingresado incorrecto")
+        accion = str(input("¿Que deseas hacer? (registrarme/ingresar)\n"))
 
