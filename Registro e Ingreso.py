@@ -2,7 +2,7 @@
 import sqlite3
 
 #Crear Conexión a la base de de datos SQLite3
-conn = sqlite3.connect("Registros.db")
+conn = sqlite3.connect("Cuentas.db")
 cursor = conn.cursor()
 
 #Crear tabla para el registro de nuevas cuentas
@@ -76,14 +76,14 @@ while True:
             else:
                 break
         #Validación de la existencia de la cuenta en la base de datos
-        conn_login = sqlite3.connect("Registros.db")
+        conn_login = sqlite3.connect("Cuentas.db")
         cursor_login = conn_login.cursor()
         cursor_login.execute("SELECT * FROM usuarios WHERE correo=?",(correo,))
         result_login = cursor_login.fetchone()
         if result_login:
             print("\nEl correo " +correo+ " ya esta registrado\n")  
         else:
-            cursor_login.execute("INSERT INTO cuentas2 (Correo,Nombre1,Nombre2,Apellido_Paterno,Apellido_Materno,Celular,Contraseña)VALUES(?,?,?,?,?,?,?)",
+            cursor_login.execute("INSERT INTO usuarios (Correo,Nombre1,Nombre2,Apellido_Paterno,Apellido_Materno,Celular,Contraseña)VALUES(?,?,?,?,?,?,?)",
             (correo,nombre_1,nombre_2,apellido_1,apellido_2,telefono,contraseña_2))
             print("\nRegistro con exito")
             conn_login.commit()
